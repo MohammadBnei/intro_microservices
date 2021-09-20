@@ -21,11 +21,13 @@ router.get('/:id', function (req, res, next) {
 
 router.post('/', async (req, res) => {
   const data = req.body
-  console.log({ data })
+  try {
+    const payment = await createPayment(data)
 
-  const payment = await createPayment(data)
-
-  res.send({ payment })
+    res.send({ payment })
+  } catch (error) {
+    res.send({ error: error.message })
+  }
 })
 
 module.exports = router;

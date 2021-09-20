@@ -1,14 +1,13 @@
 const is = require('is_js')
-const fetch = require('node-fetch').default
+const fetch = require('node-fetch')
 const { productCreator, products, updateProduct } = require('./model')
 
 const USER_URL = process.env.USER_URL
 
 const createProduct = async (data) => {
     const { userId } = data
-    if (!(await verifyUser(userId))) {
-        throw new Error('Could not verify user')
-    }
+    await verifyUser(userId)
+
     const product = productCreator(data)
     return product
 }
@@ -40,7 +39,12 @@ module.exports = {
 }
 
 const verifyUser = async (userId) => {
-    const user = await (await fetch(USER_URL + userId)).json()
+    try {
+        const user = await (await fetch(USER_URL + userId)).json()
 
-    return !!user
+        if (!user) throw new Error()
+    } catch (error) {
+        console.log(error)
+        throw new Error('Could not verify user')
+    }
 }

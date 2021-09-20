@@ -33,13 +33,11 @@ router.post('/', async (req, res) => {
 router.post('/canbuy', (req, res) => {
   const { payed, productId } = req.body
 
-  console.log({ payed, productId })
   res.send(canBuy(payed, productId))
 })
 
 router.post('/bought', (req, res) => {
   const { productId } = req.body
-  console.log({ productId })
 
   res.send(bought(productId))
 })

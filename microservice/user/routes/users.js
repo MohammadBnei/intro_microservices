@@ -17,7 +17,7 @@ router.get('/:id', function (req, res, next) {
     return
   }
 
-  res.send(listUsers(id));
+  res.send(listUsers(id) || null);
 });
 
 router.post('/', (req, res) => {
