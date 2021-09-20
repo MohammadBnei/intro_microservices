@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  user:
+    image: node:14-alpine3.11
+    working_dir: /app
+    volumes:
+      - /app/node_modules
+      - ./user:/app
+    env_file: .env
+    ports:
+      - 3004:3000
+    command: npm run dev
+    stdin_open: true
+    
+  product:
+    image: node:14-alpine3.11
+    working_dir: /app
+    volumes:
+      - /app/node_modules
+      - ./product:/app
+    env_file: .env
+    ports:
+      - 3002:3000
+    command: npm run dev
+    stdin_open: true
+    
+  payment:
+    image: node:14-alpine3.11
+    working_dir: /app
+    volumes:
+      - /app/node_modules
+      - ./payment:/app
+    env_file: .env
+    ports:
+      - 3003:3000
+    command: npm run dev
+    stdin_open: true

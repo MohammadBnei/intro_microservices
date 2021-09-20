@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  monolith:
+    image: node:14-alpine3.11
+    working_dir: /app
+    volumes:
+      - /app/node_modules
+      - ./:/app
+    ports:
+      - 3001:3000
+    # command: npm run start:dev
+    stdin_open: true

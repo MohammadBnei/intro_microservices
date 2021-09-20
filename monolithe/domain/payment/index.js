@@ -1,5 +1,4 @@
 const { canBuy, bought } = require('../product')
-const { updateProduct } = require('../product/model')
 const { paymentCreator, payments } = require('./model')
 
 const createPayment = (data) => {
