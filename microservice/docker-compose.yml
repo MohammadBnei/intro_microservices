@@ -10,7 +10,7 @@ services:
     env_file: .env
     ports:
       - 3004:3000
-    command: npm run dev
+    command: sh -c "npm i && npm run dev"
     stdin_open: true
     
   product:
@@ -22,7 +22,7 @@ services:
     env_file: .env
     ports:
       - 3002:3000
-    command: npm run dev
+    command: sh -c "npm i && npm run dev"
     stdin_open: true
     
   payment:
@@ -34,5 +34,5 @@ services:
     env_file: .env
     ports:
       - 3003:3000
-    command: npm run dev
+    command: sh -c "npm i && npm run dev"
     stdin_open: true
