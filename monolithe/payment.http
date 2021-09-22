@@ -1,0 +1,15 @@
+POST http://localhost:3001/payment
+Content-Type: application/json
+
+{
+    "payed": 100,
+    "buyerId": "8e066bda-83d4-438c-be47-743f8bbc32ac",
+    "productId": "0c17d96a-4125-489a-b35b-8e96ee4931e9"
+}
+
+### 
+
+GET http://localhost:3001/payment
+### 
+
+GET http://localhost:3001/payments/b3beadb2-5ce9-451d-9504-899be8505c16

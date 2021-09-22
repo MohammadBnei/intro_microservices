@@ -1,8 +1,0 @@
-POST http://localhost:3003/payment
-content-type: application/json
-
-{
-    "buyerId": "ebaf95f1-ee28-4816-bf34-d48bdcfef201",
-    "productId": "0c17d96a-4125-489a-b35b-8e96ee4931e9",
-    "payed": 10
-}
