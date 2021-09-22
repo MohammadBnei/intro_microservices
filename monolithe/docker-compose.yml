@@ -9,5 +9,5 @@ services:
       - ./:/app
     ports:
       - 3001:3000
-    # command: npm run start:dev
+    command: sh -c "npm i && npm run dev"
     stdin_open: true

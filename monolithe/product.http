@@ -1,0 +1,15 @@
+POST http://localhost:3001/products
+Content-Type: application/json
+
+{
+    "price": 12,
+    "quantity": 5,
+    "userId": "b3beadb2-5ce9-451d-9504-899be8505c16"
+}
+
+### 
+
+GET http://localhost:3001/product
+### 
+
+GET http://localhost:3001/products/b3beadb2-5ce9-451d-9504-899be8505c16
