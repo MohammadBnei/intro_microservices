@@ -18,7 +18,7 @@ const listProducts = (id) => {
 
 const canBuy = (balance = 0, productId) => {
     const product = products.find(({ id }) => id === productId)
-    if (is.not.existy(balance) || is.not.existy(product) || balance < product.price) {
+    if (is.not.existy(balance) || is.not.existy(product) || balance < product.price || product.quantity < 1) {
         return false
     }
 
