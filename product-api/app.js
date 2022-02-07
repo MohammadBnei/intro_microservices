@@ -3,14 +3,14 @@ var express = require('express');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var paymentsRouter = require('./routes/payments');
+var productsRouter = require('./routes/products');
 
 var app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use('/', indexRouter);
-app.use('/payments', paymentsRouter);
+app.use('/products', productsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

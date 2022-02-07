@@ -1,4 +1,4 @@
-const { canBuy, bought } = require('../product')
+const { canBuy, bought } = require('../../services/product')
 const { paymentCreator, payments } = require('./model')
 
 const createPayment = (data) => {

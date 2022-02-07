@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  product-api:
+    image: node:14-alpine3.11
+    working_dir: /app
+    volumes:
+      - /app/node_modules
+      - ./:/app
+    ports:
+      - 3003:3000
+    command: sh -c "npm i && npm run dev"
+    stdin_open: true
+
+networks:
+  default: 
+    name: monolithe_default

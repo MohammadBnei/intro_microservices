@@ -1,6 +1,7 @@
 var express = require('express');
 const is = require('is_js')
 const { createProduct, listProducts } = require('../domain/product');
+const { updateProduct } = require('../domain/product/model');
 var router = express.Router();
 
 /* GET products listing. */
@@ -30,5 +31,15 @@ router.post('/', async (req, res) => {
     res.send({ error: 'Something went wrong' })
   }
 })
+
+router.put('/:id', async (req, res) => {
+  const data = req.body
+
+  updateProduct(req.params.id, data)
+
+  res.send()
+})
+
+
 
 module.exports = router;

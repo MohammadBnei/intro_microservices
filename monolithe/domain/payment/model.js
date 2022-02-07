@@ -1,7 +1,7 @@
 const is = require('is_js')
 const { v4: uuidv4 } = require('uuid');
+const { listProducts } = require('../../services/product');
 const { listUsers } = require('../../services/user');
-const { listProducts } = require('../product');
 const payments = []
 
 const paymentCreator = async (data) => {
@@ -12,8 +12,9 @@ const paymentCreator = async (data) => {
     }
 
     const user = await listUsers(buyerId)
+    const product = await listProducts(productId)
 
-    if (!user?.id || is.empty(listProducts(productId))) {
+    if (!user?.id || !product?.id) {
         throw new Error('Buyer or Product not found')
     }
 
