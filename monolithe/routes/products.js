@@ -19,13 +19,16 @@ router.get('/:id', function (req, res, next) {
   res.send(listProducts(id));
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   const data = req.body
-  console.log({ data })
 
-  const product = createProduct(data)
+  try {
+    const product = await createProduct(data)
 
-  res.send({ product })
+    res.send({ product })
+  } catch (error) {
+    res.send({ error: 'Something went wrong' })
+  }
 })
 
 module.exports = router;

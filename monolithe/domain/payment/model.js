@@ -1,7 +1,7 @@
 const is = require('is_js')
 const { v4: uuidv4 } = require('uuid');
+const { listUsers } = require('../../services/user');
 const { listProducts } = require('../product');
-const { listUsers } = require('../user');
 const payments = []
 
 const paymentCreator = (data) => {

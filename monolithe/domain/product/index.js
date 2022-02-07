@@ -1,8 +1,8 @@
 const is = require('is_js')
 const { productCreator, products, updateProduct } = require('./model')
 
-const createProduct = (data) => {
-    const product = productCreator(data)
+const createProduct = async (data) => {
+    const product = await productCreator(data)
     return product
 }
 

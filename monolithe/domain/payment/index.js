@@ -5,7 +5,6 @@ const createPayment = (data) => {
     const { payed, productId } = data
     if (!canBuy(payed, productId)) {
         throw new Error('Can\'t buy')
-        return
     }
 
     const payment = paymentCreator(data)

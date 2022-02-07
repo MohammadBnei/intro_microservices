@@ -5,19 +5,25 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-  res.send(listUsers());
+  const users = listUsers()
+  if (!users || users.length === 0) {
+    res.status(404).send()
+    return
+  }
+
+  res.send(users);
 });
 
 router.get('/:id', function (req, res, next) {
   const { id } = req.params
-  console.log({ id })
+  const user = listUsers(id)
 
-  if (is.empty(id)) {
-    res.send({ err: 'Id not defined' })
+  if (!id || !user) {
+    res.status(404).send()
     return
   }
 
-  res.send(listUsers(id));
+  res.send(user);
 });
 
 router.post('/', (req, res) => {

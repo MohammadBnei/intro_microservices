@@ -1,6 +1,6 @@
 const is = require('is_js')
 const { v4: uuidv4 } = require('uuid');
-const { listUsers } = require('../user');
+const { listUsers } = require('../../services/user');
 
 const products = [{
     "id": "1450861b-fb56-4e36-a4d4-7213036a2c98",
@@ -22,10 +22,13 @@ const products = [{
     "quantity": 15
 }]
 
-const productCreator = (data) => {
+const productCreator = async (data) => {
     const { name, price, userId, quantity } = data
 
-    if (is.not.alphaNumeric(name) || is.not.number(price) || is.not.number(quantity) || is.empty(listUsers(userId))) {
+    const user = await listUsers(userId);
+    console.log({ user })
+
+    if (is.not.alphaNumeric(name) || is.not.number(price) || is.not.number(quantity) || !user?.id) {
         throw new Error('Wrong data for product')
     }
 
