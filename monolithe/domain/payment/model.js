@@ -4,14 +4,16 @@ const { listUsers } = require('../../services/user');
 const { listProducts } = require('../product');
 const payments = []
 
-const paymentCreator = (data) => {
+const paymentCreator = async (data) => {
     const { buyerId, productId } = data
 
     if (is.empty(buyerId) || is.empty(productId)) {
         throw new Error('Wrong data for payment')
     }
 
-    if (is.empty(listUsers(buyerId)) || is.empty(listProducts(productId))) {
+    const user = await listUsers(buyerId)
+
+    if (!user?.id || is.empty(listProducts(productId))) {
         throw new Error('Buyer or Product not found')
     }
 

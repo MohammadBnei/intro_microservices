@@ -19,11 +19,11 @@ router.get('/:id', function (req, res, next) {
   res.send(listPayments(id));
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   const data = req.body
   console.log({ data })
 
-  const payment = createPayment(data)
+  const payment = await createPayment(data)
 
   res.send({ payment })
 })

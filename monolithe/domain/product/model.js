@@ -26,7 +26,6 @@ const productCreator = async (data) => {
     const { name, price, userId, quantity } = data
 
     const user = await listUsers(userId);
-    console.log({ user })
 
     if (is.not.alphaNumeric(name) || is.not.number(price) || is.not.number(quantity) || !user?.id) {
         throw new Error('Wrong data for product')
